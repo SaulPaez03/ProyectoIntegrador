@@ -2,15 +2,15 @@ import MoneyTracker.*;
 
 public class Main {
     public static void main(String[] args) {
-        Transaction[] transactions = new Transaction[]{
-                new Income(5, "Test"),
+        Income[] incomes = new Income[]{
+                new Income(5, "Test","Salary")};
+
+        Expenditure[] expenditures = new Expenditure[]{
                 new Expenditure(10, "Test")
-        };
-        Category[] categories = new Category[]{
-          new Category("Test Category")
+
         };
 
-        Client client = new Client(transactions, categories);
+        Client client = new Client(incomes, expenditures);
 
         client.render();
 
