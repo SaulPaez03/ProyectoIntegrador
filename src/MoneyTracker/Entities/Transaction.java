@@ -3,7 +3,6 @@ package MoneyTracker.Entities;
 import MoneyTracker.Interfaces.TransactionMethods;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Transaction implements TransactionMethods {
     private int id;
@@ -79,7 +78,7 @@ public class Transaction implements TransactionMethods {
     @Override
     public  double sumDouble(double v){
         return this.amount+v;
-    };
+    }
 
     @Override
     public void print() {

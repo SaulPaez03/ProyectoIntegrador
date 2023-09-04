@@ -3,10 +3,14 @@ package MoneyTracker.DAL;
 import java.util.Collection;
 
 public interface CRUD<T> {
-    public  Collection<T> getAll();
-    public T getById(Integer id);
-    public int update(T object);
-    public boolean insert(T object);
-    public int delete(Integer id);
+    Collection<T> getAll();
+
+    T getById(Integer id);
+
+    int update(T object);
+
+    boolean insert(T object);
+
+    int delete(Integer id);
 
 }

@@ -1,13 +1,11 @@
 package MoneyTracker.Mappers;
 
 import MoneyTracker.DAL.CategoryDAOImpl;
-import MoneyTracker.DTOs.CategoryDTO;
 import MoneyTracker.DTOs.TransactionDTO;
 import MoneyTracker.Entities.Category;
 import MoneyTracker.Entities.Transaction;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 public class TransactionMapper {
 

@@ -2,14 +2,12 @@ package MoneyTracker.View;
 
 import MoneyTracker.Controllers.CategoriesController;
 import MoneyTracker.Controllers.TransactionsController;
-import MoneyTracker.DAL.CategoryDAO;
 import MoneyTracker.DAL.DatabaseConnection;
 import MoneyTracker.DTOs.CategoryDTO;
 import MoneyTracker.DTOs.TransactionDTO;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Client {
 
@@ -119,7 +117,6 @@ public class Client {
 
     }
 
-    ;
 
     private void showTransactions() {
         List<TransactionDTO> transactions = this.transactionsController.getAllTransactions();
@@ -133,7 +130,7 @@ public class Client {
         System.out.println("3 - Go back");
         Scanner scanner = new Scanner(System.in);
 
-        Integer selectedOption;
+        int selectedOption;
 
 
         while (true) {
@@ -167,7 +164,6 @@ public class Client {
         boolean added = this.categoriesController.addCategory(name);
         String response = added ? "Category added" : "Something went wrong adding the category, try again";
         System.out.println(response);
-        return;
     }
 
     private void deleteCategory() {
@@ -179,7 +175,7 @@ public class Client {
         while (true) {
             int selectedOption = scanner.nextInt();
             scanner.nextLine();
-            if (selectedOption > index || selectedOption < 1) {
+            if ((selectedOption > index) || (selectedOption < 1)) {
                 System.out.println("Select a valid option");
                 continue;
             } else if (selectedOption == ++index) {

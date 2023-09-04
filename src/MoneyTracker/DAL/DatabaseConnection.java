@@ -1,9 +1,7 @@
 package MoneyTracker.DAL;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
-import java.util.LinkedList;
-import java.util.List;
+
 
 public class DatabaseConnection {
     public static DatabaseConnection instance;
@@ -88,7 +86,6 @@ public class DatabaseConnection {
     }
 
 
-
     private void initializeDataBase() {
         this.executeQuery(
                 "CREATE TABLE IF NOT EXISTS CATEGORIES(ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR (50) NOT NULL)");
@@ -98,26 +95,24 @@ public class DatabaseConnection {
         try {
 
             this.startConnection();
-            Statement statement= this.getConnection().createStatement();
+            Statement statement = this.getConnection().createStatement();
             statement.execute("SELECT COUNT(*) AS COUNT FROM CATEGORIES");
             ResultSet results = statement.getResultSet();
             results.first();
 
             int count = results.getInt("COUNT");
-            System.out.println("Categories count: " +count
-            );
+            System.out.println("Categories count: " + count);
             if (count == 0) {
-                String[] basicCategories = new String[] {
-                    "House","Food", "Fees", "Clothes", "Healthcare", "Pets"
-                };
-                for(String category:basicCategories){
+                String[] basicCategories = new String[]{
+                        "House", "Food", "Fees", "Clothes", "Healthcare", "Pets"};
+                for (String category : basicCategories) {
                     this.executeQuery(String.format("INSERT INTO CATEGORIES(NAME) VALUES ('%1$s')", category));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        ;
+
 
     }
 }

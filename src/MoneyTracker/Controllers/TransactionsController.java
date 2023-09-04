@@ -7,12 +7,10 @@ import MoneyTracker.Mappers.TransactionMapper;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Stream;
 
 
 public class TransactionsController {
-    private TransactionDAOImpl transactionDAO;
+    private final TransactionDAOImpl transactionDAO;
 
     public TransactionsController() {
         this.transactionDAO = new TransactionDAOImpl();
@@ -31,7 +29,8 @@ public class TransactionsController {
     public List<TransactionDTO> getTransactionByCategoryID(int categoryId){
         List<Transaction> list = this.transactionDAO.getAllByCategoryId(categoryId);
         return  list.stream().map(TransactionMapper::toDto).toList();
-    };
+    }
+
     public boolean saveTransaction(Double amount, String Note, LocalDate date, String category){
         Transaction trn = TransactionMapper.toEntity(new TransactionDTO(1,Note, amount, category, date ));
         return this.transactionDAO.insert(trn);

@@ -1,7 +1,7 @@
 package MoneyTracker.DAL;
 
 public abstract class DAOImpl {
-    DatabaseConnection databaseConnection;
+    final DatabaseConnection databaseConnection;
 
     public DAOImpl() {
         this.databaseConnection = DatabaseConnection.getDatabaseConnection();

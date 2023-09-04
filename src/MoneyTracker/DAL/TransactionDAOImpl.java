@@ -16,7 +16,7 @@ public class TransactionDAOImpl extends DAOImpl implements TransactionDAO {
 
     @Override
     public List<Transaction> getAll() {
-        List<Transaction> transactions = new LinkedList<Transaction>();
+        List<Transaction> transactions = new LinkedList<>();
         try {
             this.databaseConnection.startConnection();
             Statement statement = this.databaseConnection.getConnection().createStatement();
@@ -32,6 +32,7 @@ public class TransactionDAOImpl extends DAOImpl implements TransactionDAO {
 
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
         } finally {
             this.databaseConnection.closeConnection();
         }
@@ -82,7 +83,7 @@ public class TransactionDAOImpl extends DAOImpl implements TransactionDAO {
     }
 
     public List<Transaction> getAllByCategoryId(int categoryID){
-        List<Transaction> transactions = new LinkedList<Transaction>();
+        List<Transaction> transactions = new LinkedList<>();
         try {
             this.databaseConnection.startConnection();
             Statement statement = this.databaseConnection.getConnection().createStatement();
@@ -99,6 +100,7 @@ public class TransactionDAOImpl extends DAOImpl implements TransactionDAO {
 
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
         } finally {
             this.databaseConnection.closeConnection();
         }

@@ -8,7 +8,7 @@ import MoneyTracker.Mappers.CategoryMapper;
 import java.util.List;
 
 public class CategoriesController {
-    private CategoryDAOImpl categoryDAO;
+    private final CategoryDAOImpl categoryDAO;
 
     public CategoriesController() {
         this.categoryDAO = new CategoryDAOImpl();
@@ -17,7 +17,8 @@ public class CategoriesController {
     public List<CategoryDTO> getAllCategories(){
 
         return this.categoryDAO.getAll().stream().map(CategoryMapper::toDto).toList();
-    };
+    }
+
     public boolean addCategory(String name){
         return  this.categoryDAO.insert(new Category(name, 1));
     }
